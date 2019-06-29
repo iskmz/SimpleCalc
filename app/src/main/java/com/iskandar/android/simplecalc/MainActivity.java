@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         clearWelcomeTextStatus=false;
         aboutMsgStatus=false;
         imgClickCounter=0;
-        eegg = new Dialog(this,R.style.Theme_AppCompat_Dialog);
+        eegg = new Dialog(this);
         c11=0;
         eeggView = findViewById(R.id.txtEEgg);
         /////////////////////////////////////////////
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                initializeEEgg();
                 eegg.dismiss();
             }
         });
