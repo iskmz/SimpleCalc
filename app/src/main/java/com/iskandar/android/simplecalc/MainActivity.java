@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         clearWelcomeTextStatus=false;
         aboutMsgStatus=false;
         imgClickCounter=0;
-        eegg = new Dialog(this,R.style.Theme_AppCompat_Light_DialogWhenLarge);
+        eegg = new Dialog(this,R.style.Theme_AppCompat_Dialog);
         c11=0;
         eeggView = findViewById(R.id.txtEEgg);
         /////////////////////////////////////////////
@@ -49,9 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeEEggDialog() {
         eegg.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        eegg.setContentView(getLayoutInflater().inflate(R.layout.image_layout
-                , null));
+        View v = LayoutInflater.from(this).inflate(R.layout.image_layout,null);
+        eegg.setContentView(v);
         eegg.setCanceledOnTouchOutside(false);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eegg.dismiss();
+            }
+        });
+        eegg.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     //////////// initial methods block //////////////////////////
